@@ -17,8 +17,18 @@ var_dump($headers);
 
 //CHECK SITE STATUS
 
+//Site is up, correct URL, status 200 OK
+
 if($headers['code'] === 200){
   echo 'Site is up ';
+  }
+
+//Site is up but moved to new URL,
+//A missing https or slash at the end of URL also results in
+//Status 301 Moved Perminantly
+
+if($headers['code'] === 301){
+  echo 'Site new  URL is '.$headers['location'];
   }
 
 //BENCHMARK PERFORMANCE
