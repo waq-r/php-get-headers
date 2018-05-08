@@ -12,10 +12,20 @@ Class to get http headers using diffrent methods available in PHP
  * all get header methods return an array of all headers
  * first element of array contains int http response code
 
-<h3>INPUT/OUTPUT</h2>
+<h3>INPUT/OUTPUT</h3>
  makes http request to a URL return http response headers
  @return array of headers
  @param  (mac , pc, mobile): optional user-agent param to change CURL user-agent
+ 
+ <h2>Use Cases</h2>
+ <p>
+<h3>Check if a web site is up</h3>
+Use crontab to make http requests periodically to the website you want to monitor, send alert if http response code is not 200
+
+<h3>Make sure URL is up before making file_get_contents</h3>
+Make a headers request to ensure webpage exists, befor making PHP's file_get_contents or fopen calls.
+</p>
+
  
 <h2>Usage Example</h2>
 
