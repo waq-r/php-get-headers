@@ -85,7 +85,7 @@ class GetHeaders
 
 		// note execution start time
 
-		$this->executionTime = - microtime(true);
+		$startTime = microtime(true);
 
 		// if request speed is below 1000bytes for 15 sec than close curl
 
@@ -93,7 +93,7 @@ class GetHeaders
 
 		// note execution end time
 
-		$this->executionTime+= microtime(true);
+		$this->executionTime = microtime(true) - $startTime;
 
 		// get and set http status code
 
@@ -117,7 +117,7 @@ class GetHeaders
 
 		// note execution start time
 
-		$this->executionTime = - microtime(true);
+		$startTime = microtime(true);
 
 		// initiate curl and set URL
 
@@ -146,7 +146,7 @@ class GetHeaders
 
 		// note execution end time
 
-		$this->executionTime+= microtime(true);
+		$this->executionTime = microtime(true) - $startTime;
 
 		// check, if no error then make an array of header values
 
@@ -182,7 +182,7 @@ class GetHeaders
 
 		// note execution start time
 
-		$this->executionTime = - microtime(true);
+		$startTime = microtime(true);
 
 		// get headers
 
@@ -190,7 +190,7 @@ class GetHeaders
 
 		// note execution end time
 
-		$this->executionTime+= microtime(true);
+		$this->executionTime = microtime(true) - $startTime;
 
 		// get int http status code
 
@@ -256,13 +256,13 @@ class GetHeaders
 		}
 
 	/*
-	* Reset executionTime, call between two requests
+	* Get executionTime of last HTTP request
 	*/
 	public
 
-	function resetResponseTime()
+	function getExecutionTime()
 		{
-		return $this->executionTime = NULL;
+		return $this->executionTime;
 		}
 
 	/*
@@ -284,19 +284,14 @@ class GetHeaders
 			{
 			$urlList = array(
 
-				// 'https://www.google.com/',
-				// 'https://www.bing.com/',
-				// 'https://www.yahoo.com/',
-				// 'https://preproxy.com/',
-
+				'https://www.google.com/',
+				'https://www.bing.com/',
+				'http://www.yahoo.com/',
+				'http://www.preproxy.com/',
 				'http://www.iplocality.com/',
-
-			  'http://www.facebook.com/',
-
+				'http://www.facebook.com/',
 				'http://www.youtube.com/',
-
-				'https://www.twitter.com/'
-
+				'http://www.twitter.com/'
 			);
 
 			// Array of all three get http headers methods
@@ -328,7 +323,6 @@ class GetHeaders
 
 					$this->$value($url);
 					$benchmark[$url][$key] = $this->executionTime;
-					$this->resetResponseTime();
 					}
 
 				// 3. Append last element to $benchmark, an assoc array of average speeds/execution times
