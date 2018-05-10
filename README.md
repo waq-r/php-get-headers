@@ -35,7 +35,7 @@ $h = new GetHeaders(); //Keeps default user-agent
 
 $headers = $h->get_curl_headers('https://www.iplocality.com/'); //get headers via CURL
 
-$headers = $h->get_shell_headers('http://www.google.com/'); //get headers via Linux Shell
+$headers = $h->get_shell_headers('https://preproxy.com/'); //get headers via Linux Shell
 
 $headers = $h->get_headers('http://www.google.com/'); //get headers via PHP function  get_headers
 
