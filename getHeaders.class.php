@@ -65,6 +65,33 @@ class GetHeaders
 			$this->userAgent = $user_agents[$userAgent];
 			}
 		}
+	
+	/*
+	* based on URL type get http headers using best method
+	* @return array of headers
+	* @param URL to get http headers of
+	*/
+	public
+
+	function getHeaders($url)
+		{
+
+		// if https then get_headers method would be faster
+
+		if (parse_url($url, PHP_URL_SCHEME) === 'https')
+			{
+			$headers = $this->get_headers($url);
+			}
+
+		// use shell or php curl if url is not secure
+
+		  else
+			{
+			$headers = $this->get_curl_headers($url);
+			}
+
+		return $headers;
+		}
 
 	/*
 	* get http headers using Linux shell
