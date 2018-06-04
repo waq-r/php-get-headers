@@ -15,6 +15,17 @@ $headers = $h->get_shell_headers('http://www.youtube.com/');
 
 var_dump($headers);
 
+//HTTP HEADERS using best method available
+
+//jsut pass URL to getHeaders method, which will decide and use best
+// and fastest method to get and return headers
+
+	$h = new GetHeaders('mac');
+
+	$headers = $h->getHeaders('https://www.google.com/');
+
+	var_dump($h, $headers);
+
 //CHECK SITE STATUS
 
 //Site is up, correct URL, status 200 OK
